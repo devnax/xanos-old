@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000
 async function createServer() {
   const app = express()
   const vite = await createViteServer({
-    root: __dirname,
+    root: path.resolve(__dirname, "../"),
     plugins: [react()],
     server: { middlewareMode: true },
     appType: 'custom'

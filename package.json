@@ -2,9 +2,9 @@
   "name": "xanos",
   "version": "0.0.0",
   "type": "module",
-  "bin": "./src/bin/index.js",
+  "bin": "./bin/index.js",
   "scripts": {
-    "dev": "npx nodemon",
+    "dev": "npx nodemon --ext 'ts' --ignore 'src/**/*.spec.ts' --exec 'npx ts-node --esm ./src/server/server.dev.ts'",
     "build": "node build.config.js"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "commander": "^11.1.0",
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 function App() {
     const [count, setCount] = useState(0);
     return (React.createElement(React.Fragment, null,
-        React.createElement("h1", null, "Vite + React"),
+        React.createElement("h1", null, "Hello world"),
         React.createElement("div", { className: "card" },
             React.createElement("button", { onClick: () => setCount((count) => count + 1) },
                 "count is ",
