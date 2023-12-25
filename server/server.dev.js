@@ -6,6 +6,7 @@ import react from "@vitejs/plugin-react";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
 async function createServer() {
+  test();
   const app = express();
   const vite = await createViteServer({
     root: path.resolve(__dirname, "../"),
@@ -14,7 +15,6 @@ async function createServer() {
     appType: "custom",
   });
   app.use(vite.middlewares);
-  console.log("asdasdasdasd");
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
     try {

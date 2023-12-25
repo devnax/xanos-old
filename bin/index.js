@@ -2,7 +2,7 @@
 
 import { Command } from "commander";
 const program = new Command();
-import serve from "./handler/serve.js";
+import serve from "./cli/serve.js";
 
 program.name("XANOS").description("Usages");
 
