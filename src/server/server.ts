@@ -1,9 +1,10 @@
 import express from 'express'
 const PORT = process.env.PORT || 3000
+import AppsServerProcess from './AppsServerProcess'
 
 async function createServer() {
   const app = express()
-
+  AppsServerProcess()
   app.use('*', async (_req, res) => {
     let template = `
                 <!doctype html>

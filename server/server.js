@@ -1,9 +1,11 @@
-import express from "express";
+import express from 'express';
 const PORT = process.env.PORT || 3000;
+import AppsServerProcess from './AppsServerProcess';
 async function createServer() {
-  const app = express();
-  app.use("*", async (_req, res) => {
-    let template = `
+    const app = express();
+    AppsServerProcess();
+    app.use('*', async (_req, res) => {
+        let template = `
                 <!doctype html>
                 <html lang="en">
                   <head>
@@ -18,8 +20,8 @@ async function createServer() {
                   </body>
                 </html>
             `;
-    res.status(200).set({ "Content-Type": "text/html" }).end(template);
-  });
-  app.listen(PORT, () => console.log(`server started at localhost:${PORT}`));
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+    });
+    app.listen(PORT, () => console.log(`server started at localhost:${PORT}`));
 }
 createServer();

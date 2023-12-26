@@ -3,12 +3,13 @@ import { fileURLToPath } from 'url'
 import express from 'express'
 import { createServer as createViteServer } from 'vite'
 import react from '@vitejs/plugin-react'
-
+import { TT } from './test'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const PORT = process.env.PORT || 3000
 
 async function createServer() {
   const app = express()
+  TT
   const vite = await createViteServer({
     root: path.resolve(__dirname, "../"),
     plugins: [react()],

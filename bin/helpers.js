@@ -6,6 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const XANOS_DIR = path.resolve(__dirname, "../");
 export const XANOS_BUILD_DIR = process.cwd() + "/.xanos";
+export const APPS_DIR = process.cwd() + "/apps";
 
 export const exec = (command) => {
   child_process.exec(command, (error, stdout, stderr) => {

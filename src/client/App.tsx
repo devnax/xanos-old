@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
+import AppsClientProcess from './AppsClientProcess'
 
 function App() {
   const [count, setCount] = useState(0)
+  useMemo(() => {
+    AppsClientProcess()
+  }, [])
   return (
     <>
       <h1>Hello world</h1>

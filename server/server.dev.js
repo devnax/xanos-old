@@ -1,24 +1,25 @@
-import path from "path";
-import { fileURLToPath } from "url";
-import express from "express";
-import { createServer as createViteServer } from "vite";
-import react from "@vitejs/plugin-react";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import express from 'express';
+import { createServer as createViteServer } from 'vite';
+import react from '@vitejs/plugin-react';
+import { TT } from './test';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
 async function createServer() {
-  test();
-  const app = express();
-  const vite = await createViteServer({
-    root: path.resolve(__dirname, "../"),
-    plugins: [react()],
-    server: { middlewareMode: true },
-    appType: "custom",
-  });
-  app.use(vite.middlewares);
-  app.use("*", async (req, res, next) => {
-    const url = req.originalUrl;
-    try {
-      let template = `
+    const app = express();
+    TT;
+    const vite = await createViteServer({
+        root: path.resolve(__dirname, "../"),
+        plugins: [react()],
+        server: { middlewareMode: true },
+        appType: 'custom'
+    });
+    app.use(vite.middlewares);
+    app.use('*', async (req, res, next) => {
+        const url = req.originalUrl;
+        try {
+            let template = `
                 <!doctype html>
                 <html lang="en">
                   <head>
@@ -33,13 +34,14 @@ async function createServer() {
                   </body>
                 </html>
             `;
-      template = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(template);
-    } catch (e) {
-      vite.ssrFixStacktrace(e);
-      next(e);
-    }
-  });
-  app.listen(PORT, () => console.log(`server started at localhost:${PORT}`));
+            template = await vite.transformIndexHtml(url, template);
+            res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+        }
+        catch (e) {
+            vite.ssrFixStacktrace(e);
+            next(e);
+        }
+    });
+    app.listen(PORT, () => console.log(`server started at localhost:${PORT}`));
 }
 createServer();
