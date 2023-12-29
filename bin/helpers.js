@@ -57,10 +57,6 @@ export const spawn = (command, args) => {
     console.error(`stderr: ${data}`);
   });
 
-  _spawn.on("close", (code) => {
-    console.log(`Exit code ${code}`);
-  });
-
   _spawn.on("error", (err) => {
     console.error("Failed to start server:", err);
   });

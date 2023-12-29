@@ -1,11 +1,11 @@
 import express from 'express'
 const PORT = process.env.PORT || 3000
-import AppsServerProcess from './AppsServerProcess'
+import ServerAppsProcessing from './ServerAppsProcessing'
 
-async function createServer() {
+export async function createServer() {
   const app = express()
-  AppsServerProcess()
-  app.use('*', async (_req, res) => {
+  ServerAppsProcessing()
+  app.use('*', async (_req: any, res: any) => {
     let template = `
                 <!doctype html>
                 <html lang="en">
@@ -17,7 +17,7 @@ async function createServer() {
                   </head>
                   <body>
                     <div id="root"></div>
-                    <script type="module" src="client/main.tsx"></script>
+                    <script type="module" src="client/main.js"></script>
                   </body>
                 </html>
             `

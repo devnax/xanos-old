@@ -5,7 +5,7 @@ import {
   spawn,
   execSync,
 } from "../helpers.js";
-import dynamicImport from "../inc/dynamicImport.js";
+// import dynamicImport from "../inc/dynamicImport.js";
 import esbuild from "esbuild";
 
 const skipFilesPlugin = () => {
@@ -13,11 +13,11 @@ const skipFilesPlugin = () => {
     name: "skip-files-plugin",
     setup(build) {
       const pattern = `^${APPS_DIR}/([^/]+)/([^/]+)\\.(js|jsx|ts|tsx)$`;
-
       build.onLoad({ filter: new RegExp(pattern) }, async (args) => {
         const [appName, filename] = args.path
           .replace(APPS_DIR + "/", "")
           .split("/");
+        // console.log(appName);
       });
     },
   };
@@ -57,7 +57,11 @@ const serve = async (opt) => {
     platform: "node",
   });
 
-  spawn("node", [`${XANOS_BUILD_DIR}/server/server.dev.js`]);
+  spawn("node", [
+    "--trace-warnings",
+    "--experimental-specifier-resolution=node",
+    `${XANOS_BUILD_DIR}/server/server.dev.js`,
+  ]);
 
   //load config file
   // watch apps dir

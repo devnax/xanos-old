@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import fs from "fs";
+import esbuild from "esbuild";
 const packageDir = "./";
 
 const _exec = (command) => {
@@ -11,10 +12,25 @@ const _exec = (command) => {
 };
 
 const buildPackage = async () => {
-  // _exec(`rm -rf ${packageDir}`);
-  _exec(`npx tsc -p ./tsconfig.json --outDir ${packageDir}`);
-  // _exec(`cp -r "./src/bin" "${packageDir}"`);
-  // _exec(`cp "./package.json" "${packageDir}/package.json"`);
+  // _exec(`npx tsdx build --entry ./client/main.tsx`);
+  // _exec(`npx tsc -p ./tsconfig.json --outDir ${packageDir}`);
+
+  esbuild.build({
+    entryPoints: ["src/client/main.tsx"],
+    outfile: "client/client.js",
+    bundle: true,
+    format: "esm",
+  });
+
+  esbuild.build({
+    entryPoints: ["src/server/server.ts"],
+    outdir: "server",
+    bundle: true,
+    format: "cjs",
+    platform: "node",
+    external: ["vite"],
+  });
+  return;
 
   try {
     let filePath = `${packageDir}/server/server.dev.js`;
