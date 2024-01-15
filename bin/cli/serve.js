@@ -17,7 +17,6 @@ const skipFilesPlugin = () => {
         const [appName, filename] = args.path
           .replace(APPS_DIR + "/", "")
           .split("/");
-        // console.log(appName);
       });
     },
   };
