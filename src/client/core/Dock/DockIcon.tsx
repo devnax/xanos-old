@@ -1,8 +1,8 @@
 import React from "react";
 import IconButton from "naxui/IconButton";
-import App, { AppProps } from "../../handlers/App";
+import { App, AppProps } from "../App";
 import { withStore } from "state-range";
-import Window, { WindowStoreType } from "../../handlers/Window";
+import Window, { WindowStoreType } from "../Window";
 import Stack from "naxui/Stack";
 import ContextMenu from "../../handlers/ContextMenu";
 

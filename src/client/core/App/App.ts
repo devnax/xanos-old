@@ -1,8 +1,12 @@
 import { ReactElement } from 'react';
 import { Store } from 'state-range'
-import { ContextMenyType } from './ContextMenu';
-import Finder from '../core/Finder';
-import Window from './Window';
+import { ContextMenyType } from '../../handlers/ContextMenu';
+import Finder from '../Finder';
+import Window from '../Window';
+import Layer from 'naxui/Layer'
+import Menu from 'naxui/Menu'
+import Drawer from './views/Drawer'
+
 
 type AppMetaProps = {
 }
@@ -55,6 +59,17 @@ class App extends Store<AppProps, AppMetaProps> {
 
     getApps() {
         return this.getAll()
+    }
+
+    openDrawer() {
+        Menu.close()
+        Layer.open("OS_APPS_DRAWER", Drawer, {
+            blur: 20
+        })
+    }
+
+    closeDrawer() {
+        Layer.close("OS_APPS_DRAWER")
     }
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
-import App from '../handlers/App';
+import { App } from '../core/App';
 import HomeIcon from 'naxui-icons/round/Home'
 import Text from 'naxui/Text'
 import Input from 'naxui/Input'
 import Stack from "naxui/Stack";
-import ShortcutApp from "../handlers/ShortcutApp";
+import ShortcutApp from "../core/App/ShortcutApp";
 import IconSettings from "naxui-icons/round/Settings";
 import IconPeople from "naxui-icons/round/People";
 import Setting from "../core/Settings";

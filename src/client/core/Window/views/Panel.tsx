@@ -2,13 +2,12 @@ import Stack from "naxui/Stack";
 import Transition from "naxui/Transition";
 import Portal from "naxui/Portal";
 import React, { useEffect, useRef, useState } from "react";
-import Window from "../handlers/Window";
-import App, { AppProps } from "../handlers/App";
+import Window from "../../Window";
+import { App, AppProps } from "../../App";
 import CloseIcon from 'naxui-icons/round/Close'
 import IconButton from "naxui/IconButton";
 import { withStore } from "state-range";
-import System, { systemFactory } from "../handlers/System";
-
+import System from "../../../handlers/System";
 
 const Item = ({ win }: any) => {
     let [open, setOpen] = useState(true)
@@ -152,12 +151,11 @@ const _WindowListPanelView = () => {
     )
 }
 
-
 const WindowListPanelView = withStore(_WindowListPanelView)
 
 
 const WindowListPanel = () => {
-    const open = systemFactory.getMeta("TOGGLE_WINDOW_PANEL")
+    const open = Window.getMeta("showPanel")
     return (
         <>
             {

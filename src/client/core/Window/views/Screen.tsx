@@ -1,10 +1,10 @@
 import React from "react";
-import App, { AppProps } from "../handlers/App";
+import { App, AppProps } from "../../App";
 import { withStore } from "state-range";
 import Stack from "naxui/Stack";
-import Window from "../handlers/Window";
-import ContextMenu from "../handlers/ContextMenu";
-import isElementWritable from "../utils/isElementWritable";
+import Window from "../Handler";
+import ContextMenu from "../../../handlers/ContextMenu";
+import isElementWritable from "../../../utils/isElementWritable";
 import Transition from "naxui/Transition";
 
 type Props = {

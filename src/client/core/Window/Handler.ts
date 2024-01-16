@@ -1,6 +1,6 @@
 import { Store } from "state-range";
-import App from "./App";
-import ShortcutApp from "./ShortcutApp";
+import { App } from "../App";
+import ShortcutApp from "../App/ShortcutApp";
 
 export type WindowType = {
     active: boolean;
@@ -12,8 +12,11 @@ export type WindowStoreType = WindowType & {
     _id: string;
     observe: number
 }
+type WindowMeta = {
+    showPanel: boolean;
+}
 
-class Window extends Store<WindowType> {
+class Window extends Store<WindowType, WindowMeta> {
     open(appId: string) {
         const win = this.insert({
             active: false,
@@ -197,6 +200,20 @@ class Window extends Store<WindowType> {
         if (activeWin && activeWin.activeIndex !== null) {
             return App.findFirst({ id: activeWin.apps[activeWin.activeIndex] })
         }
+    }
+
+
+    showPanel() {
+        const is = this.getMeta("showPanel")
+        if (!is) this.setMeta("showPanel", true)
+    }
+    hidePanel() {
+        const is = this.getMeta("showPanel")
+        if (is) this.setMeta("showPanel", false)
+    }
+
+    isShowPanel() {
+        return !!this.getMeta("showPanel")
     }
 }
 

@@ -3,7 +3,7 @@ import Stack from 'naxui/Stack'
 import Transition from 'naxui/Transition'
 import Scrollbar from 'naxui/Scrollbar'
 import { withStore } from "state-range"
-import App from '../../handlers/App'
+import { App } from '../'
 import AppCard from "./AppCard"
 
 const AppsDrawerView = ({ open }: any) => {

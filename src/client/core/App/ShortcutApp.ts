@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Store } from 'state-range'
-import Window from './Window';
+import Window from '../Window';
 
 type ShortcutAppMetaProps = {
     activeApp: string | null;

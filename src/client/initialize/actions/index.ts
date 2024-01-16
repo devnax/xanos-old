@@ -1,6 +1,6 @@
 import CONSTANCE from "../CONSTANCE";
 import Action from '../../Hooks/Action'
-import Window from "../../handlers/Window";
+import Window from "../../core/Window/Handler";
 import System from "../../handlers/System";
 
 Action.on(CONSTANCE.OS_WINDOW_NEXT, () => {

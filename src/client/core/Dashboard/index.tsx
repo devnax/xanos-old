@@ -2,12 +2,12 @@ import Stack from 'naxui/Stack'
 import Text from 'naxui/Text'
 import React from 'react'
 
-const Desktop = () => {
+const Dashboard = () => {
     return (
         <Stack height="100%">
-            <Text variant='h1'>Desktop!</Text>
+            <Text variant='h1'>Dashboard!</Text>
         </Stack>
     )
 }
 
-export default Desktop
+export default Dashboard

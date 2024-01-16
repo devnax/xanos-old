@@ -1,7 +1,7 @@
 import Stack from "naxui/Stack";
 import React from "react";
-import AppsDrawer from ".";
-import Window from "../../handlers/Window";
+import { App } from "../../App";
+import Window from "../../Window";
 
 const AppCard = ({ icon, appId }: any) => {
     return (
@@ -17,7 +17,7 @@ const AppCard = ({ icon, appId }: any) => {
                 shadow: 10
             }}
             onClick={() => {
-                AppsDrawer.close()
+                App.closeDrawer()
                 Window.setActiveApp(appId)
             }}
         >

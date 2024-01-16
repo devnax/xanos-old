@@ -1,23 +1,21 @@
 import React, { ReactElement, useMemo, useState } from "react"
 import ViewBox from "naxui/ViewBox"
 import { useMediaScreen, useWindowResize } from "naxui-manager";
-import Dock from "./Dock";
+import Dock from "../Dock";
 import { noDispatch, withStore } from "state-range";
-import WindowView from "./WindowView";
-import Window from "../handlers/Window";
+import Window, { RenderWindow } from "../Window";
 import { IconButtonProps } from "naxui/IconButton";
 import Stack from "naxui/Stack";
-import WindowListPanel from './WindowListPanel'
-import shortcuts from "../initialize/shortcuts";
-import Action from "../Hooks/Action";
-import CONSTANCE from "../initialize/CONSTANCE";
-import { isHotkey, hasActionKey } from "../utils/Hotkey";
-import Desktop from "./Desktop";
-import ShortcutApp from "../handlers/ShortcutApp";
+import shortcuts from "../../initialize/shortcuts";
+import Action from "../../Hooks/Action";
+import CONSTANCE from "../../initialize/CONSTANCE";
+import { isHotkey, hasActionKey } from "../../utils/Hotkey";
+import Dashboard from "../Dashboard";
+import ShortcutApp from "../../core/App/ShortcutApp";
 import Menu from "naxui/Menu";
-import isElementWritable from "../utils/isElementWritable";
-import ContextMenu from "../handlers/ContextMenu";
-import RenderNotch from "../core/Notch/RenderNotch";
+import isElementWritable from "../../utils/isElementWritable";
+import ContextMenu from "../../handlers/ContextMenu";
+import RenderNotch from "../Notch/RenderNotch";
 export type EndIconType = {
     icon: () => ReactElement;
     onClick?: IconButtonProps['onClick'];
@@ -71,7 +69,6 @@ const OS = (props: OSProps) => {
         }
     }, [])
 
-    const windows = Window.getAll()
     const mediaScreen = useMediaScreen()
     const isMobile = mediaScreen.isDown("md")
     const activeWindow: any = Window.getActiveWindow()
@@ -155,16 +152,13 @@ const OS = (props: OSProps) => {
             >
                 <Stack position="relative" width="100%" height="100%">
                     {
-                        (!activeWindow && !ShortcutRender) && <Desktop />
+                        (!activeWindow && !ShortcutRender) && <Dashboard />
                     }
                     {
                         !!ShortcutRender && <ShortcutRender />
                     }
-                    {
-                        windows.map(win => (<WindowView key={win._id} windowId={win._id} />))
-                    }
+                    <RenderWindow />
                 </Stack>
-                <WindowListPanel />
             </ViewBox>
         </ViewBox>
     )

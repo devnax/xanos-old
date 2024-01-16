@@ -1,9 +1,8 @@
 import React from "react";
-import ScreenView from "./ScreenView";
-import Window from "../handlers/Window";
+import ScreenView from "./Screen";
+import Window, { WindowStoreType } from "../Handler";
 import { withStore } from "state-range";
 import Stack from "naxui/Stack";
-import { WindowStoreType } from "../handlers/Window";
 import Transition from "naxui/Transition";
 
 type Props = {

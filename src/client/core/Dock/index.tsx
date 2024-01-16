@@ -3,25 +3,23 @@ import ViewBox from "naxui/ViewBox"
 import Badge from "naxui/Badge"
 import React, { useEffect, useState } from "react"
 import DockIcon from "./DockIcon"
-import { OSProps } from "xanos/src/client/OSMain/main"
-import App from "../../handlers/App"
+import { DockProps } from "./types"
+import { App, ShortcutApp } from "../App"
 import IconButton from "naxui/IconButton"
 import WindowStackIcon from 'naxui-icons/round/Layers'
-import Window from "../../handlers/Window"
+import Window from "../../core/Window"
 import DashboardIcon from 'naxui-icons/round/GridView'
-import System, { systemFactory } from "../../handlers/System"
 import { withStore } from "state-range"
 import Menu from "naxui/Menu"
 import { PlacementTypes } from "naxui/Menu/placedMenu"
 import useBlurCss from 'naxui/useBlurCss'
-import OSMenu from "./OSMenu"
-import ShortcutApp from "../../handlers/ShortcutApp"
+import OSMenu from "./DockMenu"
 import Transition from "naxui/Transition"
 import ContextMenu from "../../handlers/ContextMenu"
 import IconClose from "naxui-icons/round/Close"
 import { alpha } from "naxui-manager"
 
-const _RenderShortcutAppIcon = ({ dockPosition }: OSProps) => {
+const _RenderShortcutAppIcon = ({ dockPosition }: DockProps) => {
     const shortcutApp: any = ShortcutApp.getActiveApp()
     const isActive = !!shortcutApp
     const [_icon, setIcon] = useState(shortcutApp?.icon)
@@ -100,7 +98,7 @@ const _RenderShortcutAppIcon = ({ dockPosition }: OSProps) => {
 
 const RenderShortcutAppIcon = withStore(_RenderShortcutAppIcon)
 
-const Dock = (props: OSProps) => {
+const Dock = (props: DockProps) => {
     let { dockPosition, centerMode, dockBgcolor, logo } = props
     let isHorizental = dockPosition === "top" || dockPosition === "bottom"
     let apps = App.getApps()
@@ -177,10 +175,7 @@ const Dock = (props: OSProps) => {
                             <IconButton
                                 corner="rounded"
                                 onClick={() => {
-                                    const isWindowPanelOpen = systemFactory.getMeta("TOGGLE_WINDOW_PANEL", false)
-                                    if (!isWindowPanelOpen) {
-                                        System.toggleOpenWindowPanel()
-                                    }
+                                    Window.showPanel()
                                 }}
                                 onContextMenu={(e) => {
                                     ContextMenu(e, [

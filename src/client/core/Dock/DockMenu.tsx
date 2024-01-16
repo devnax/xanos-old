@@ -10,12 +10,10 @@ import SettingsIcon from 'naxui-icons/round/Settings'
 import UsersIcon from 'naxui-icons/round/People'
 import AboutIcon from 'naxui-icons/round/Info'
 import LogoutIcon from 'naxui-icons/round/Logout'
-
-import AppsDrawer from '../../core/AppsDrawer'
-import ShortcutApp from '../../handlers/ShortcutApp'
+import { App, ShortcutApp } from '../App'
 import Menu from 'naxui/Menu'
-import Finder from '../../core/Finder'
-import Notification from '../../core/Notification'
+import Finder from '../Finder'
+import Notification from '../Notification'
 
 
 const OSMenu = () => {
@@ -44,7 +42,7 @@ const OSMenu = () => {
             <ListItem
                 startIcon={<AppsIcon />}
                 onClick={() => {
-                    AppsDrawer.open()
+                    App.openDrawer()
                 }}
             >
                 Apps

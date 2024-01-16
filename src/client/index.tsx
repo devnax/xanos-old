@@ -4,6 +4,6 @@ import './initialize/initialApps'
 import "./initialize/actions"
 import "./initialize/settings"
 import "./initialize/permissions"
-import OSMain from './OSMain'
+import Layout from './core/Layout'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<OSMain />)
+ReactDOM.createRoot(document.getElementById('root')!).render(<Layout />)
