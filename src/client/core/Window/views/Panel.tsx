@@ -7,7 +7,6 @@ import { App, AppProps } from "../../App";
 import CloseIcon from 'naxui-icons/round/Close'
 import IconButton from "naxui/IconButton";
 import { withStore } from "state-range";
-import System from "../../../handlers/System";
 
 const Item = ({ win }: any) => {
     let [open, setOpen] = useState(true)
@@ -126,7 +125,7 @@ const _WindowListPanelView = () => {
                             setOpened(true)
                         } else {
                             setOpened(false)
-                            System.toggleOpenWindowPanel()
+                            Window.isShowPanel() ? Window.hidePanel() : Window.showPanel()
                         }
                     }}
                 >

@@ -5,5 +5,16 @@ import "./initialize/actions"
 import "./initialize/settings"
 import "./initialize/permissions"
 import Layout from './core/Layout'
+import { AuthView } from './core/Auth'
+import { ThemeProvider } from "naxui-manager";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<Layout />)
+const Root = () => {
+    return (
+        <ThemeProvider>
+            <AuthView />
+            <Layout />
+        </ThemeProvider>
+    )
+}
+
+ReactDOM.createRoot(document.getElementById('root')!).render(<Root />)

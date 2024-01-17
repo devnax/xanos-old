@@ -2,12 +2,12 @@ import CONSTANCE from "./CONSTANCE"
 const shortcuts = [
     {
         key: "mod+right",
-        action: CONSTANCE.OS_WINDOW_NEXT,
+        action: "system/window/next",
         props: {}
     },
     {
         key: "mod+left",
-        action: CONSTANCE.OS_WINDOW_PREV,
+        action: "system/window/prev",
         props: {}
     },
     {

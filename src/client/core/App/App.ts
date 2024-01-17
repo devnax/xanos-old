@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Store } from 'state-range'
-import { ContextMenyType } from '../../handlers/ContextMenu';
+import { ContextMenyType } from 'xanos/src/client/core/ContextMenu';
 import Finder from '../Finder';
 import Window from '../Window';
 import Layer from 'naxui/Layer'

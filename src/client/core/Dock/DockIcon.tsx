@@ -4,7 +4,7 @@ import { App, AppProps } from "../App";
 import { withStore } from "state-range";
 import Window, { WindowStoreType } from "../Window";
 import Stack from "naxui/Stack";
-import ContextMenu from "../../handlers/ContextMenu";
+import ContextMenu from "../ContextMenu";
 
 export type DockIconProps = {
     appId: string;

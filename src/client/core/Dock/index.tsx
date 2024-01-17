@@ -15,7 +15,7 @@ import { PlacementTypes } from "naxui/Menu/placedMenu"
 import useBlurCss from 'naxui/useBlurCss'
 import OSMenu from "./DockMenu"
 import Transition from "naxui/Transition"
-import ContextMenu from "../../handlers/ContextMenu"
+import ContextMenu from "../ContextMenu"
 import IconClose from "naxui-icons/round/Close"
 import { alpha } from "naxui-manager"
 
